@@ -1,0 +1,23 @@
+name: Build GMod x64 Module
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Rust x64
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          target: x86_64-pc-windows-msvc
+          
+      - name: Build Module
+        run: cargo build --release --target x86_64-pc-windows-msvc
+        
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gmsv_autorun_win64
+          path: target/x86_64-pc-windows-msvc/release/*.dll

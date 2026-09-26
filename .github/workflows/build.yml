@@ -8,8 +8,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Setup Rust x64
-        uses: dtolnay/rust-toolchain@stable
+      - name: Setup Rust Nightly x64
+        uses: dtolnay/rust-toolchain@nightly
         with:
           target: x86_64-pc-windows-msvc
           
